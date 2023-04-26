@@ -1,0 +1,81 @@
+{
+    "services": {
+        "LaunchPage": {
+            "adapter": {
+                "config": {
+                    "groups": [
+                        {
+                            "id": "Home",
+                            "title": "Home",
+                            "isPreset": true,
+                            "isVisible": true,
+                            "isGroupLocked": false,
+                            "tiles": []
+                        },
+                        {
+                            "id": "Monitoring",
+                            "title": "Monitoring",
+                            "isPreset": true,
+                            "isVisible": true,
+                            "isGroupLocked": false,
+                            "tiles": [
+                                {
+                                    "id": "sap.fe.cap.travel_analytics",
+                                    "title": "Analytics",
+                                    "tileType": "sap.ushell.ui.tile.StaticTile",
+                                    "properties": {
+                                        "title": "Analytics",
+                                        "subtitle": "",
+                                        "targetURL": "#booking-process",
+                                        "icon": "sap-icon://chart-table-view"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "NavTargetResolution": {
+            "config": {
+                "enableClientSideTargetResolution": true
+            }
+        },
+        "ClientSideTargetResolution": {
+            "adapter": {
+                "config": {
+                    "inbounds": {
+                        "Integrations-view": {
+                            "semanticObject": "booking",
+                            "action": "process",
+                            "title": "Analytics",
+                            "signature": {
+                                "parameters": {},
+                                "additionalParameters": "allowed"
+                            },
+                            "resolutionResult": {
+                                "applicationType": "URL",
+                                "additionalInformation": "SAPUI5.Component=sap.fe.cap.travel_analytics",
+                                "url": "/travel_analytics/webapp"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "bootstrapPlugins": {
+        "RuntimeAuthoringPlugin": {
+            "component": "sap.ushell.plugins.rta",
+            "config": {
+                "validateAppVersion": false
+            }
+        },
+        "PersonalizePlugin": {
+            "component": "sap.ushell.plugins.rta-personalize",
+            "config": {
+                "validateAppVersion": false
+            }
+        }
+    }
+}

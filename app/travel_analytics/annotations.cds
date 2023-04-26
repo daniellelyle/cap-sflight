@@ -104,14 +104,19 @@ annotate service.Bookings with @UI.LineItem : [
 annotate service.Bookings with @UI.Chart : {
   Title               : '{i18n>Bookings}',
   ChartType           : #Column,
-  DynamicMeasures : [
-    '@Analytics.AggregatedProperty#minPrice',
-    '@Analytics.AggregatedProperty#maxPrice',
-    '@Analytics.AggregatedProperty#avgPrice'
-  ],
+//   DynamicMeasures : [
+//     '@Analytics.AggregatedProperty#minPrice',
+//     '@Analytics.AggregatedProperty#maxPrice',
+//     '@Analytics.AggregatedProperty#avgPrice'
+//   ],
+
+Measures : [
+    FlightPrice
+],
   Dimensions          : [airline],
   MeasureAttributes   : [{
-    DynamicMeasure : '@Analytics.AggregatedProperty#minPrice',
+    Measure : FlightPrice,
+    //DynamicMeasure : '@Analytics.AggregatedProperty#minPrice',
     Role    : #Axis1
   }],
   DimensionAttributes : [{
@@ -177,7 +182,8 @@ annotate service.Bookings with @(
           $Type : 'Common.ValueListParameterDisplayOnly',
           ValueListProperty : 'Name',
       }]
-    }
+    },
+    Common.ValueListWithFixedValues
   )
 };
 
@@ -220,7 +226,7 @@ annotate service.Bookings with @(
         ValueListProperty : 'code',
       }]
     },
-    //Common.ValueListWithFixedValues : true
+    Common.ValueListWithFixedValues : true
   )
 };
 
